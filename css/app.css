@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  height: 95vh;
+  background-color: #263445;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 50px;
+  padding: 20px 0;
+  color: white;
+}
+
+.description {
+  font-weight: 200;
+  font-size: 30px;
+  color: white;
+}
+
+.description:hover {
+  color: rgba(29, 29, 255, 0.9);
+}
+
+.links {
+  display: flex;
+  min-width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#score {
+  color: white;
+  font-size: 35px;
+}
+
+#newGame {
+  outline: none;
+  font-size: 20px;
+  padding: 10px 20px;
+
+  font-family: "Nunito", sans-serif;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid rgba(255, 255, 255, 0.418);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 25px;
+  background-color: green;
+}
+
+.row:nth-child(odd) .col:nth-child(odd) {
+  background-color: #263445;
+}
+.row:nth-child(odd) .col:nth-child(even) {
+  background-color: #202937;
+}
+.row:nth-child(even) .col:nth-child(odd) {
+  background-color: #202937;
+}
+.row:nth-child(even) .col:nth-child(even) {
+  background-color: #263445;
+}
+
+.snake {
+  height: 25px;
+  width: 25px;
+  background-color: #2e8cd4;
+}
+
+.apple {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(224, 0, 0);
+}
