@@ -21,11 +21,13 @@ class Game {
   }
 
   turnRight(x, y) {
+    // Checking right border
     if (y + 1 === 20) {
       this.gameOver();
       return;
     }
 
+    // Checking contact
     this.snake.snakePoints.push([x, y + 1]);
     for (let i = 0; i < this.snake.snakePoints.length - 1; i++) {
       if (
@@ -38,6 +40,7 @@ class Game {
     }
     this.draw();
 
+    // Checking apple
     if (x === this.fruitX && y + 1 === this.fruitY) {
       this.score += 1;
       this.generateApple();
@@ -46,12 +49,14 @@ class Game {
     }
   }
   turnLeft(x, y) {
+    // Checking left border
     if (y - 1 === -1) {
       this.gameOver();
       return;
     }
 
     this.snake.snakePoints.push([x, y - 1]);
+    // Checking contact
     for (let i = 0; i < this.snake.snakePoints.length - 1; i++) {
       if (
         this.snake.snakePoints[i][0] === x &&
@@ -63,6 +68,7 @@ class Game {
     }
     this.draw();
 
+    // Checking apple
     if (x === this.fruitX && y - 1 === this.fruitY) {
       this.score += 1;
       this.generateApple();
@@ -72,12 +78,14 @@ class Game {
   }
 
   turnDown(x, y) {
+    // Checking down border
     if (x + 1 === 20) {
       this.gameOver();
       return;
     }
 
     this.snake.snakePoints.push([x + 1, y]);
+    // Checking contact
     for (let i = 0; i < this.snake.snakePoints.length - 1; i++) {
       if (
         this.snake.snakePoints[i][0] === x + 1 &&
@@ -89,6 +97,7 @@ class Game {
     }
     this.draw();
 
+    // Checking apple
     if (x + 1 === this.fruitX && y === this.fruitY) {
       this.score += 1;
       this.generateApple();
@@ -97,12 +106,14 @@ class Game {
     }
   }
   turnUp(x, y) {
+    // Checking up border
     if (x - 1 === -1) {
       this.gameOver();
       return;
     }
 
     this.snake.snakePoints.push([x - 1, y]);
+    // Checking contact
     for (let i = 0; i < this.snake.snakePoints.length - 1; i++) {
       if (
         this.snake.snakePoints[i][0] === x - 1 &&
@@ -114,6 +125,7 @@ class Game {
     }
     this.draw();
 
+    // Checking apple
     if (x - 1 === this.fruitX && y === this.fruitY) {
       this.score += 1;
       this.generateApple();
@@ -176,19 +188,23 @@ class Game {
         break;
     }
   }
-  changeInterval() {
-    clearInterval(this.interval);
+
+  checkInterval() {
     if (this.INTERVAL === 50) {
       this.intervalDirection = "rise";
     } else if (this.INTERVAL === 200) {
       this.intervalDirection = "down";
     }
+  }
+  changeInterval() {
+    this.checkInterval();
+    clearInterval(this.interval);
+
     if (this.intervalDirection === "rise") {
       this.INTERVAL += 50;
     } else {
       this.INTERVAL -= 50;
     }
-    console.log(this.INTERVAL);
     this.interval = setInterval(this.loop, this.INTERVAL);
   }
 

@@ -11,10 +11,11 @@ document.getElementById("newGame").addEventListener("click", () => {
 document.onkeydown = function (e) {
   e.preventDefault();
   switch (e.keyCode) {
-    // up
+    //Shift
     case 16:
       game.changeInterval();
       break;
+      // up
     case 38:
       if (game.direction !== "down") game.setDirection("up");
       break;
