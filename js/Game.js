@@ -1,5 +1,7 @@
 class Game {
   constructor(size) {
+    this.INTERVAL = 200;
+    this.intervalDirection = "down";
     this.fruitX = 10;
     this.fruitY = 10;
     this.size = size;
@@ -152,7 +154,7 @@ class Game {
       area += "</div>";
     }
     document.getElementById("container").innerHTML = area;
-    document.getElementById('score').innerText = `Score: ${this.score}`;
+    document.getElementById("score").innerText = `Score: ${this.score}`;
     this.snake.drawSnake(this.fruitX, this.fruitY);
   }
 
@@ -174,13 +176,28 @@ class Game {
         break;
     }
   }
+  changeInterval() {
+    clearInterval(this.interval);
+    if (this.INTERVAL === 50) {
+      this.intervalDirection = "rise";
+    } else if (this.INTERVAL === 200) {
+      this.intervalDirection = "down";
+    }
+    if (this.intervalDirection === "rise") {
+      this.INTERVAL += 50;
+    } else {
+      this.INTERVAL -= 50;
+    }
+    console.log(this.INTERVAL);
+    this.interval = setInterval(this.loop, this.INTERVAL);
+  }
 
   loop() {
     this.update();
   }
   start() {
     this.draw();
-    this.interval = setInterval(this.loop, 200);
+    this.interval = setInterval(this.loop, this.INTERVAL);
   }
 
   gameOver() {

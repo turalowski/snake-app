@@ -5,7 +5,6 @@ document.getElementById("newGame").addEventListener("click", () => {
   delete game;
   game = new Game([20,20])
   game.start();
-    
 })
 
 
@@ -13,6 +12,9 @@ document.onkeydown = function (e) {
   e.preventDefault();
   switch (e.keyCode) {
     // up
+    case 16:
+      game.changeInterval();
+      break;
     case 38:
       if (game.direction !== "down") game.setDirection("up");
       break;
